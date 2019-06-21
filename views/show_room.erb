@@ -1,0 +1,49 @@
+<p> <%=   "#{name}, #{  session[:user_score]} " %>
+  </p>
+
+<h1> <%= room.name %> </h1>
+
+
+<pre>
+<%= room.description %>
+</pre>
+
+
+<style>
+body {
+  background-color: skyblue;
+}
+h1 {
+  color: red;
+  font-size: 40px;
+  text-align: center;
+}
+pre {
+   color: black;
+   font-family: thick;
+   font-size: 20px;
+{
+p {
+  color: red;
+  font-size: 25px;
+  font-family: thick;
+}
+</style>
+</body>
+
+<% if room.name == "death" || room.name == "The End" %>
+    <p><a href="/">Play Again?</a></p>
+<% else %>
+<h2>Radio Buttons</h2>
+
+<form action="/game" method="POST">
+<p>Choose:</p>
+
+<% answers.each do |opt| %>
+  <input type="radio" name="options" value=<%= "#{opt}" %>> <%= opt%><br>
+<%end%>
+  <input type="SUBMIT">
+</form>
+
+
+<% end %>
